@@ -3,6 +3,7 @@ package com.example.logbook2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
@@ -15,5 +16,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        imageView = findViewById(R.id.imageView);
+        imageView.setImageResource(imageIds[currentIndex]);
+    }
+
+    public void showPreviousImg(View view) {
+        if (currentIndex > 0) {
+            currentIndex--;
+            imageView.setImageResource(imageIds[currentIndex]);
+        }
+    }
+
+
+    public void showNextImg(View view) {
+        if (currentIndex < imageIds.length - 1) {
+            currentIndex++;
+            imageView.setImageResource(imageIds[currentIndex]);
+        }
     }
 }
